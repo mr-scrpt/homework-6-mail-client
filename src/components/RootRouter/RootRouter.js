@@ -1,10 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
+
+
 import LoginForm from '../LoginForm';
 import AppRouter from '../AppRouter';
-import { AuthProvider } from '../../context/Auth';
+import { AuthProvider, withAuth } from '../../context/Auth';
 import { DataProvider } from '../../context/Data';
+import StartRoute from '../StartRoute';
+
 
 // Мы оборачиваем наши роуты в несколько провайдеров
 // DataProvider - предоставляет обьект data с имейлами.
@@ -12,14 +16,21 @@ import { DataProvider } from '../../context/Data';
 //                и текущий статус isAuthorized
 // BrowserRouter - провайдер react-router-dom.
 
-export default () => (
-  <DataProvider>
-    <AuthProvider>
-      <BrowserRouter>
-        <Switch>
-          {/*
+export default () => {
+  return(
+    <DataProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <Switch>
+
+            <StartRoute path="/" exact />
+            <Route path="/login" component={LoginForm}/>
+            <PrivateRoute path="/app" component={AppRouter}/>
+            <Redirect from="*" to='/'/>
+
+            {/*
             Добавьте роуты /app и /login.
-            Роут /app должен быть доступен 
+            Роут /app должен быть доступен
             только авторизованному пользователю,
             используйте приватный роут.
             По умолчанию должен происходить редирект
@@ -28,8 +39,10 @@ export default () => (
             /app будет использовать AppRouter в качестве вью
             /login будет использовать LoginForm
           */}
-        </Switch>
-      </BrowserRouter>
-    </AuthProvider>
-  </DataProvider>
-);
+          </Switch>
+        </BrowserRouter>
+      </AuthProvider>
+    </DataProvider>
+    )
+
+};

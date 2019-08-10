@@ -9,3 +9,53 @@
 
 // Так же в этом файле обьявите лейаут,
 // используйте стили из AppRouter.module.css
+import React, { Component } from 'react';
+import Style from './AppRouter.module.css';
+import { Switch, Route, Link } from 'react-router-dom';
+import {menuItem} from './menuItem';
+import {withData} from "../../context/Data";
+import {withAuth} from "../../context/Auth";
+
+import Home from '../Home';
+import InboxList from '../InboxList';
+import OutboxList from '../OutboxList';
+
+
+export default class AppRouter extends Component{
+
+    render() {
+      const {computedMatch} = this.props;
+
+      return(
+        <div className={Style.wrapper}>
+          <div className={Style.container}>
+            <nav className={Style.nav}>
+              <ul className={Style.navList}>
+                {menuItem.map(item => {
+                  const classNames = `${Style.link} t-link-${item.link} `;
+                  return(
+                    <li className={Style.navElement} key={item.id}>
+                      <Link to={`${computedMatch.url}/${item.link}`} className={classNames}>{item.label}</Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </nav>
+            <div className={Style.content}>
+            <Switch>
+                <Route to={`${computedMatch.url}/home`} component={Home} exect/>
+                <Route to={`${computedMatch.url}/inbox`} component={Home} exect/>
+                <Route to={`${computedMatch.url}/outbox`} component={Home} exect/>
+            </Switch>
+
+              {/*{menuItem.map(item => <Route to={item.link} component={item.componentName} key={item.id} exect/> )}*/}
+            </div>
+
+
+          </div>
+        </div>
+
+      )
+    }
+};
+
