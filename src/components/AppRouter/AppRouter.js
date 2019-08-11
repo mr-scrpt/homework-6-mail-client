@@ -24,7 +24,7 @@ import OutboxList from '../OutboxList';
 export default class AppRouter extends Component{
 
     render() {
-      const {computedMatch} = this.props;
+      const {match} = this.props;
 
       return(
         <div className={Style.wrapper}>
@@ -35,18 +35,19 @@ export default class AppRouter extends Component{
                   const classNames = `${Style.link} t-link-${item.link} `;
                   return(
                     <li className={Style.navElement} key={item.id}>
-                      <Link to={`${computedMatch.url}/${item.link}`} className={classNames}>{item.label}</Link>
+                      <Link to={`${match.path}/${item.link}`} className={classNames}>{item.label}</Link>
                     </li>
                   )
                 })}
               </ul>
             </nav>
             <div className={Style.content}>
-            <Switch>
-                <Route to={`${computedMatch.url}/home`} component={Home} exect/>
-                <Route to={`${computedMatch.url}/inbox`} component={Home} exect/>
-                <Route to={`${computedMatch.url}/outbox`} component={Home} exect/>
-            </Switch>
+
+              <Switch>
+                  <Route to="app/home" component={Home} exact/>
+                  <Route to="app/inbox" component={InboxList} exact/>
+                  <Route to="app/outbox" component={OutboxList} exact/>
+              </Switch>
 
               {/*{menuItem.map(item => <Route to={item.link} component={item.componentName} key={item.id} exect/> )}*/}
             </div>

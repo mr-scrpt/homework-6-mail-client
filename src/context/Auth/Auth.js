@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 const { Provider, Consumer } = React.createContext('');
 
 class AuthProvider extends Component {
-  email = 'test@test.ru';
-  password = '321';
+  email = 'Dolce';
+  password = '101601630';
 
   state = {
-    isAuthorized: true,
+    isAuthorized: false,
     authError: ''
   };
 

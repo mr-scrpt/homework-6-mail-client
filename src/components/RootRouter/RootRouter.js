@@ -22,23 +22,11 @@ export default () => {
       <AuthProvider>
         <BrowserRouter>
           <Switch>
-
-            <StartRoute path="/" exact />
             <Route path="/login" component={LoginForm}/>
             <PrivateRoute path="/app" component={AppRouter}/>
-            <Redirect from="*" to='/'/>
 
-            {/*
-            Добавьте роуты /app и /login.
-            Роут /app должен быть доступен
-            только авторизованному пользователю,
-            используйте приватный роут.
-            По умолчанию должен происходить редирект
-            на страницу логина.
+            <Redirect to='/login' />
 
-            /app будет использовать AppRouter в качестве вью
-            /login будет использовать LoginForm
-          */}
           </Switch>
         </BrowserRouter>
       </AuthProvider>

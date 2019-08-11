@@ -7,13 +7,17 @@ class PrivateRoute extends Component {
   // Он должен проверять статус авторизации
   // и перенаправлять пользователя на страницу логина,
   // если тот не авторизован.
-  render() {
-    const {component: RoteComponent, isAuthorized, ...rest} = this.props;
+  renderRoute = (routProps) => {
+    const {component: RoteComponent, isAuthorized} = this.props;
     return(
-      <React.Fragment>
-        {isAuthorized ? <RoteComponent {...rest} /> : <Redirect to='/login'/>};
-      </React.Fragment>
+      isAuthorized ? <RoteComponent {...routProps} /> : <Redirect to='/'/>
+    )
+  };
 
+  render() {
+    const {component, ...rest} = this.props;
+    return(
+      <Route {...rest} render={this.renderRoute}/>
     )
   }
 
