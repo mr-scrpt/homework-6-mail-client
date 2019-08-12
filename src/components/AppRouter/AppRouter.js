@@ -46,8 +46,7 @@ export default class AppRouter extends Component{
                 <Switch>
                     <Route path={`${match.path}`} render={()=> 'Homeee'} exact/>
                     <Route path={`${match.path}/inbox`} render={()=> 'InboxList'} exact/>
-                  <Route path={`${match.path}/outbox`} render={()=> 'OutboxList'} exact/>
-
+                    <Route path={`${match.path}/outbox`} render={()=> 'OutboxList'} exact/>
                 </Switch>
               </h3>
 

@@ -11,7 +11,6 @@ export default class InboxList extends Component{
 
   render() {
     const { data: {inbox}, match } = this.props;
-    console.log(match);
-    return <MailList styles="t-inbox-list" list={inbox} url={match}/>
+    return <MailList styles="t-inbox-list" list={inbox} match={match}/>
   }
 }
