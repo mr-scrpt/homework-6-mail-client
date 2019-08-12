@@ -2,7 +2,7 @@ const menuItem = [
   {
     id: 'home',
     label: 'Home',
-    link: 'home',
+    link: '',
     componentName: 'Home'
   },
   {

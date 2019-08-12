@@ -5,11 +5,12 @@
 // Этот компонент должен использовать MailList для отображения данных.
 import React, { Component } from 'react';
 
+import MailList from "../MailList"
 
-export default class Home extends Component{
+export default class OutboxList extends Component{
   render() {
-    const {match} = this.props;
-
-    return <div>Outbox!</div>
+    const { data: {outbox}, match } = this.props;
+    console.log(outbox);
+    return <MailList styles="t-outbox-list" list={outbox} url={match}/>
   }
 }

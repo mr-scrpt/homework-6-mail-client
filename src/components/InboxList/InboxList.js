@@ -5,11 +5,13 @@
 // Этот компонент должен использовать MailList для отображения данных.
 import React, { Component } from 'react';
 
+import MailList from "../MailList"
 
-export default class Home extends Component{
+export default class InboxList extends Component{
+
   render() {
-    const {match} = this.props;
-
-    return <div>Inbox!</div>
+    const { data: {inbox}, match } = this.props;
+    console.log(match);
+    return <MailList styles="t-inbox-list" list={inbox} url={match}/>
   }
 }

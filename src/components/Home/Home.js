@@ -9,6 +9,11 @@ export default class Home extends Component{
   render() {
     const {match} = this.props;
 
-    return <div>Home!</div>
+
+    return (
+      <div className={Style.container}>
+        <p className="t-greeting">Приветствуем в почтовом клиенте!</p>
+      </div>
+    )
   }
 }

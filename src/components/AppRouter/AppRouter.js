@@ -24,7 +24,7 @@ import OutboxList from '../OutboxList';
 export default class AppRouter extends Component{
 
     render() {
-      const {match} = this.props;
+      const {match, isExact} = this.props;
 
       return(
         <div className={Style.wrapper}>
@@ -32,7 +32,7 @@ export default class AppRouter extends Component{
             <nav className={Style.nav}>
               <ul className={Style.navList}>
                 {menuItem.map(item => {
-                  const classNames = `${Style.link} t-link-${item.link} `;
+                  const classNames = `${Style.link} t-link-${item.link} `; //${match.isExact ? 'active': ''}
                   return(
                     <li className={Style.navElement} key={item.id}>
                       <Link to={`${match.path}/${item.link}`} className={classNames}>{item.label}</Link>
@@ -42,12 +42,21 @@ export default class AppRouter extends Component{
               </ul>
             </nav>
             <div className={Style.content}>
+              <h3 className={Style.title}>
+                <Switch>
+                    <Route path={`${match.path}`} render={()=> 'Homeee'} exact/>
+                    <Route path={`${match.path}/inbox`} render={()=> 'InboxList'} exact/>
+                  <Route path={`${match.path}/outbox`} render={()=> 'OutboxList'} exact/>
 
-              <Switch>
-                  <Route to="app/home" component={Home} exact/>
-                  <Route to="app/inbox" component={InboxList} exact/>
-                  <Route to="app/outbox" component={OutboxList} exact/>
-              </Switch>
+                </Switch>
+              </h3>
+
+
+                <Switch>
+                  <Route path={`${match.path}`} component={Home} exact/>
+                  <Route path={`${match.path}/inbox`} component={withData(InboxList)} exact/>
+                  <Route path={`${match.path}/outbox`} component={withData(OutboxList)} exact/>
+                </Switch>
 
               {/*{menuItem.map(item => <Route to={item.link} component={item.componentName} key={item.id} exect/> )}*/}
             </div>
