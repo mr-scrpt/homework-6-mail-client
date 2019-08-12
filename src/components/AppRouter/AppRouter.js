@@ -11,7 +11,7 @@
 // используйте стили из AppRouter.module.css
 import React, { Component } from 'react';
 import Style from './AppRouter.module.css';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, NavLink } from 'react-router-dom';
 import {menuItem} from './menuItem';
 import {withData} from "../../context/Data";
 import {withAuth} from "../../context/Auth";
@@ -35,7 +35,7 @@ export default class AppRouter extends Component{
                   const classNames = `${Style.link} t-link-${item.link} `; //${match.isExact ? 'active': ''}
                   return(
                     <li className={Style.navElement} key={item.id}>
-                      <Link to={`${match.path}/${item.link}`} className={classNames}>{item.label}</Link>
+                      <NavLink to={`${match.path}/${item.link}`} className={classNames} activeClassName='active'>{item.label}</NavLink>
                     </li>
                   )
                 })}

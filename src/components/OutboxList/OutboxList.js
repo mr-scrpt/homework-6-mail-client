@@ -10,7 +10,7 @@ import MailList from "../MailList"
 export default class OutboxList extends Component{
   render() {
     const { data: {outbox}, match } = this.props;
-    console.log(outbox);
-    return <MailList styles="t-outbox-list" list={outbox} url={match}/>
+
+    return <MailList styles="t-outbox-list" list={outbox} match={match}/>
   }
 }
