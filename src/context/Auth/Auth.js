@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 const { Provider, Consumer } = React.createContext('');
 
 class AuthProvider extends Component {
-  email = 'Dolce';
-  password = '101601630';
+  email = 'test@test.ru';
+  password = '321';
 
   state = {
     isAuthorized: false,

@@ -4,7 +4,6 @@ import Mail from '../Mail';
 
 class InboxMail extends PureComponent {
   render() {
-    console.log('test here');
     const {
       match: {
         params: { id }

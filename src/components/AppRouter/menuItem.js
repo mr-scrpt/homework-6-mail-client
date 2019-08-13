@@ -3,20 +3,20 @@ const menuItem = [
     id: 'home',
     label: 'Home',
     link: '',
-    componentName: 'Home'
+    classNames: 'home'
   },
   {
     id: 'inbox',
     label: 'Inbox',
     link: 'inbox',
-    componentName: 'InboxList'
+    classNames: 'inbox'
 
   },
   {
     id: 'outbox',
     label: 'Outbox',
     link: 'outbox',
-    componentName: 'OutboxList'
+    classNames: 'outbox'
   },
 ];
 

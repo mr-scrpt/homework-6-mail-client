@@ -7,7 +7,6 @@ import InboxMail from "../InboxMail";
 
 const MailList = (props) => {
   const {styles, list, match} = props;
-  console.log(match);
 
   const classComp = `${Style.container} ${styles}`;
   const routeList =  list && list.map(item=>{
@@ -18,7 +17,6 @@ const MailList = (props) => {
 
   const renderList =  list && list.map(item=>{
     const descr = item.body.slice(0, 52) + '...';
-    console.log(`${match.url}/${item.id}`);
     return <Link to={`${match.url}/${item.id}`} className={Style.link} key={item.id}>{descr}</Link>
   });
 
@@ -26,10 +24,6 @@ const MailList = (props) => {
     <React.Fragment>
       <div className={classComp}>
           {renderList}
-
-        <Route path='/app/inbox/yGmwergEGcxbgssBXsVGyH6b' render={()=> <div>3333333</div>} exact/>
-
-
       </div>
 
 

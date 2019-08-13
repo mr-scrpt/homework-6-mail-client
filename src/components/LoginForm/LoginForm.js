@@ -37,8 +37,9 @@ let LoginForm = ({authError, authorize, isAuthorized}) => {
   };
 
   const FormTpl = () => {
+      const formClass = `${Style.form} t-form`;
       return(
-        <form onSubmit={submitHandler} className={Style.form}>
+        <form onSubmit={submitHandler} className={formClass}>
           {form}
           {authError !== '' && (
             <p className="login-form-error t-login-error">{authError}</p>
