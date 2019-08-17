@@ -5,8 +5,7 @@ import Style from './MailList.module.css';
 import { Switch, Route, Link } from 'react-router-dom';
 import InboxMail from "../InboxMail";
 
-const MailList = (props) => {
-  const {styles, list, match} = props;
+const MailList = ({styles, list, match}) => {
 
   const classComp = `${Style.container} ${styles}`;
   const routeList =  list && list.map(item=>{
